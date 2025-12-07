@@ -1,0 +1,754 @@
+/* --- RESET & BASIC STYLES --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Switched to a slightly more elegant system font stack */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(to bottom right, #ffffff, #f2f4f7);
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- COLORS --- */
+:root {
+    --primary: #3a414a;
+    --accent: #f79f52;
+    /* Construction Orange */
+    --light: #ffffff;
+    --text: #333333;
+    --shadow-subtle: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* --- HEADER & CONTACT BAR --- */
+.top-bar {
+    background-color: var(--primary);
+    color: var(--light);
+    padding: 10px 20px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    /* Slightly wider spacing feels higher end */
+}
+
+.top-bar a {
+    color: var(--accent);
+}
+
+header {
+    background: rgba(255, 255, 255, 0.95);
+    /* Slight transparency */
+    padding: 20px 30px;
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    /* Modern frosted glass effect */
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--primary);
+    letter-spacing: 1px;
+}
+
+.cta-button {
+    background-color: var(--accent);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 0px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(247, 159, 82, 0.3);
+}
+
+.cta-button:hover {
+    background-color: #d35400;
+    box-shadow: 0 4px 10px rgba(247, 159, 82, 0.5);
+    transform: translateY(-2px);
+}
+
+/* --- CAROUSEL (HERO SECTION) --- */
+.carousel-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+    height: 65vh;
+    /* Taller is often more luxurious */
+    background: #000;
+}
+
+.slide {
+    display: none;
+    height: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    /* Slightly brighter than before */
+    filter: contrast(110%);
+    /* Pops the images more */
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.text-overlay {
+    position: absolute;
+    bottom: 25%;
+    /* Moved up slightly */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #f2f2f2;
+    font-size: 2.5rem;
+    /* Larger font */
+    font-weight: 300;
+    /* Lighter weight looks more elegant */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    /* Softer shadow */
+    text-align: center;
+    width: 80%;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -25px;
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.3s ease;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    /* More transparent initially */
+    border-radius: 0;
+    /* Squared off controls */
+}
+
+.next {
+    right: 0;
+}
+
+.prev {
+    left: 0;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: var(--accent);
+    color: white;
+}
+
+/* --- SERVICES SECTION --- */
+.section {
+    padding: 70px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--primary);
+    font-size: 2.2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.service-card {
+    background: white;
+    padding: 50px 30px;
+    border-radius: 0px;
+    box-shadow: var(--shadow-subtle);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    border-top: 3px solid var(--accent);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.service-card h3 {
+    margin-bottom: 20px;
+    color: var(--primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.service-card p {
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.7;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+/* 1. The Container for the Shine */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: var(--shadow-subtle);
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+    z-index: 1;
+}
+
+/* When hovering the container box: */
+.gallery-item:hover {
+    transform: scale(1.05);
+    /* Make the shadow deeper to give a lifting effect */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    /* Ensure the enlarged item overlaps its neighbors */
+    z-index: 10;
+}
+
+/* 2. The Image Itself */
+.gallery-item img {
+    border-radius: 0;
+    /* Slower, smoother transition for the image scaling */
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease;
+    height: 350px;
+    object-fit: cover;
+    /* Default state: Slightly zoomed IN, slightly dimmed */
+    transform: scale(1.1);
+    filter: brightness(95%);
+}
+
+/* 4. Hover Effects */
+.gallery-item:hover img {
+    /* Scale the image DOWN back to normal size. 
+       Since it started at 1.1, this zooms out, revealing more of the photo. */
+    transform: scale(1.0);
+    /* Brighten the image back to full */
+    filter: brightness(100%);
+}
+
+
+/* --- FOOTER --- */
+footer {
+    background-color: var(--primary);
+    color: rgba(255, 255, 255, 0.8);
+    /* Slightly muted white text */
+    text-align: center;
+    padding: 60px 20px;
+    margin-top: 80px;
+}
+
+.footer-contact {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.footer-contact h3 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+/* --- MOBILE TWEAKS --- */
+@media (max-width: 600px) {
+    .text-overlay {
+        font-size: 1.5rem;
+        bottom: 15%;
+        width: 90%;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .carousel-container {
+        height: 50vh;
+    }
+
+    .section {
+        padding: 40px 15px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Full width images on mobile */
+    .gallery-item img {
+        height: 250px;
+    }
+}
+
+/* --- SOCIAL LINKS --- */
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-link svg {
+    fill: currentColor;
+    width: 20px;
+    height: 20px;
+}
+
+.social-link:hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.social-link.facebook:hover {
+    background-color: #1877F2;
+    /* Facebook Brand Color */
+    border-color: #1877F2;
+}
+
+/* --- HEADER SOCIAL ICON --- */
+.social-link.header-icon {
+    color: var(--primary);
+    border: none;
+    padding: 8px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+.social-link.header-icon:hover {
+    background-color: rgba(24, 119, 242, 0.1);
+    /* Subtle FB blue tint */
+    color: #1877F2;
+    transform: scale(1.1);
+    box-shadow: none;
+}
+
+/* --- HEADER CONTACT --- */
+.header-contact {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--primary);
+    letter-spacing: 0.5px;
+    margin-left: 20px;
+    margin-right: auto;
+}
+
+.header-contact a {
+    font-weight: 700;
+    color: var(--accent);
+}
+
+/* --- FOOTER ADJUSTMENTS --- */
+footer {
+    padding: 30px 20px;
+    margin-top: 60px;
+}
+
+.footer-contact {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.footer-contact h3 {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+/* --- HEADER CONTACT ADJUSTMENT --- */
+.header-contact {
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+/* --- OVERRIDES --- */
+.cta-button {
+    background-color: transparent !important;
+    color: var(--accent) !important;
+    padding: 10px 25px !important;
+    border: 2px solid var(--accent) !important;
+    box-shadow: none !important;
+}
+
+.cta-button:hover {
+    background-color: rgba(247, 159, 82, 0.1) !important;
+    color: #d35400 !important;
+    transform: scale(1.05) !important;
+    box-shadow: none !important;
+    border-color: #d35400 !important;
+}
+
+@media (max-width: 600px) {
+    header {
+        text-align: center;
+    }
+
+    .header-contact {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-bottom: 10px;
+        display: block;
+        width: 100%;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+}
+
+/* --- MOBILE HEADER OVERRIDES --- */
+@media (max-width: 600px) {
+    header {
+        text-align: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .logo {
+        width: 100%;
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+    }
+
+    .header-contact {
+        margin: 0 !important;
+        width: auto !important;
+        display: inline-block !important;
+    }
+
+    .social-link.header-icon {
+        margin: 0;
+    }
+
+    .cta-button {
+        display: none !important;
+    }
+}
+
+/* --- CAROUSEL IMPROVEMENTS --- */
+.slide img {
+    opacity: 0.9;
+    animation: kenburns 20s infinite alternate;
+}
+
+@keyframes kenburns {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
+
+/* Gradient Overlay */
+.slide::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    pointer-events: none;
+}
+
+.text-overlay {
+    bottom: 20%;
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    letter-spacing: 2px;
+    z-index: 2;
+    opacity: 0;
+    animation: slideUp 1s ease forwards 0.5s;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+.prev,
+.next {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin-top: -25px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.prev:hover,
+.next:hover {
+    background-color: var(--accent);
+    transform: scale(1.1);
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+/* --- HEADER SPACING ADJUSTMENTS --- */
+header {
+    gap: 20px;
+}
+
+.header-contact {
+    margin-right: 0;
+}
+
+.social-link.header-icon {
+    margin: 0;
+}
+
+/* --- GALLERY TILE ADJUSTMENT --- */
+.gallery-item img {
+    height: 450px !important;
+}
+
+/* --- LIGHTBOX MODAL --- */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1000;
+    /* Sit on top */
+    padding-top: 50px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 1200px;
+    max-height: 90vh;
+    object-fit: contain;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    z-index: 1001;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--accent);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
+}
+
+/* Lightbox Navigation */
+.prev-lightbox,
+.next-lightbox {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    z-index: 1002;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.next-lightbox {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev-lightbox {
+    left: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+.prev-lightbox:hover,
+.next-lightbox:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Mobile Text Overlay Adjustment */
+@media (max-width: 600px) {
+    .text-overlay {
+        font-size: 1.5rem;
+        bottom: 15%;
+        width: 95%;
+    }
+}
+
+/* Services List */
+.services-list {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.services-list li {
+    font-size: 1.2rem;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text);
+}
+
+.services-list li:last-child {
+    border-bottom: none;
+}
+
+/* Copyright Text */
+.copyright {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
