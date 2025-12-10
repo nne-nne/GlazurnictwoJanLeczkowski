@@ -52,11 +52,15 @@ let currentLightboxIndex = 0;
 const imageUrls = [];
 
 // Populate image URLs array and add click listeners
+// Populate image URLs array and add click listeners
 galleryImages.forEach((img, index) => {
-    imageUrls.push(img.src);
+    // Use data-full-src if available, otherwise fallback to src
+    const fullSrc = img.getAttribute('data-full-src') || img.src;
+    imageUrls.push(fullSrc);
+
     img.addEventListener("click", function () {
         modal.style.display = "block";
-        modalImg.src = this.src;
+        modalImg.src = fullSrc;
         currentLightboxIndex = index;
     });
 });
